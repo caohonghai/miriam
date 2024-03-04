@@ -1,7 +1,48 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { slugify } from "../utils";
+
+const data = await getCollection("version");
+let idx = 1;
+const test = data[0].data.list as string[];
+const lists = test.map((item) =>
+  item.split("-").map((i, index) => {
+    if (index === 0) {
+      return {
+        name: i.trim(),
+      };
+    }
+    return {
+      index: idx++,
+      name: i.trim(),
+    };
+  })
+);
+const entries = await getCollection("lyrics");
 ---
 
 <Layout title="Welcome to Astro.">
-  <div class="max-w-3xl">123</div>
+  <div class="max-w-3xl mx-auto py-12 px-6">
+    {
+      lists.map((list) =>
+        list.map((item, idx) =>
+          idx === 0 ? (
+            <div class="text-lg py-3 border-b border-base">
+              # {item.name} #
+            </div>
+          ) : (
+            <div class="py-3 border-b border-base text-gray-600">
+              <a
+                href={`/song/${slugify(item.name)}`}
+                class="hover:text-black transition-colors duration-200 ease-in-out"
+              >
+                {item.index}. {item.name}
+              </a>
+            </div>
+          )
+        )
+      )
+    }
+  </div>
 </Layout>

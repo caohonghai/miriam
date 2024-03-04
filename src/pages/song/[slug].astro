@@ -1,0 +1,73 @@
+---
+import {
+  getCollection,
+  getEntry,
+} from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { slugify } from "../../utils";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("lyrics");
+  return entries.map((entry) => ({
+    params: { slug: slugify(entry.slug) },
+    props: {
+      title: entry.id.replace(".md", ""),
+      id: entry.slug,
+      content: entry.body,
+      meta: entry.data,
+    },
+  }));
+}
+
+interface SongMeta {
+  title: string;
+  slug: string;
+  meta: {
+    album?: string;
+    lyricist?: string;
+    composer?: string;
+  };
+}
+
+export interface Props {
+  title: string;
+  id: string;
+  meta: SongMeta["meta"];
+  content: string;
+}
+
+const { title, id, content, meta } = Astro.props;
+
+const chineseRegex = /\[\d{2}:\d{2}\].+/g;
+const lyr = content
+  .match(chineseRegex)
+  ?.map((item) =>
+    item.replace(/\[\d{2}:\d{2}\]/, "")
+  );
+
+const lyric = await getEntry("lyrics", id);
+---
+
+<Layout title={title}>
+  <div class="max-w-3xl mx-auto py-12 px-6">
+    <h1 class="text-2xl bold">
+      {meta.album}
+    </h1>
+    <p class="mt-4 text-gray-800">
+      词：{meta.lyricist}
+    </p>
+    <p class="text-gray-800">
+      唱：{meta.composer}
+    </p>
+    {
+      lyr &&
+        lyr.map((item) => (
+          <p class="mt-4 text-gray-600">{item}</p>
+        ))
+    }
+    <a
+      class="text-gray-600 hover:text-black underline underline-offset-2 duration-200 transition-colors mt-10 block w-max"
+      href="/">back <</a
+    >
+  </div>
+</Layout>

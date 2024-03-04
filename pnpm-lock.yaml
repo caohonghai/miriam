@@ -4,6 +4,7 @@ specifiers:
   '@astrojs/check': ^0.5.6
   '@astrojs/tailwind': ^5.1.0
   astro: ^4.4.9
+  limax: ^4.1.0
   tailwindcss: ^3.4.1
   typescript: ^5.3.3
 
@@ -13,6 +14,9 @@ dependencies:
   astro: 4.4.9_typescript@5.3.3
   tailwindcss: 3.4.1
   typescript: 5.3.3
+
+devDependencies:
+  limax: 4.1.0
 
 packages:
 
@@ -1233,6 +1237,10 @@ packages:
       ieee754: 1.2.1
     dev: false
 
+  /bulk-replace/0.0.1:
+    resolution: {integrity: sha512-IxLEnfsCYLjlpf6mG7SWpWgA4A8IAT5dAX3FxXHFn+6FTLf3ums771elQ74sj1BCOVanBf6esu0rEC6zgwfmIg==}
+    dev: true
+
   /camelcase-css/2.0.1:
     resolution: {integrity: sha512-QOSvevhslijgYwRx6Rv7zKdMF8lbRmx+uQGx2+vDc+KI/eBnsy9kit5aj23AgGu3pa4t9AgwbnXWqS+iOY+2aA==}
     engines: {node: '>= 6'}
@@ -1893,6 +1901,13 @@ packages:
       space-separated-tokens: 2.0.2
     dev: false
 
+  /hepburn/1.2.1:
+    resolution: {integrity: sha512-v/VUHmiHhNbjDBGxYkwDXzYvfOTIKFquAn0KrPtH1D3Zv539VBPEOGYoWpLnb/FBT9vAx9anQef3noJZ2fPIBw==}
+    engines: {node: '>=4'}
+    dependencies:
+      bulk-replace: 0.0.1
+    dev: true
+
   /html-escaper/3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
     dev: false
@@ -2096,6 +2111,16 @@ packages:
     engines: {node: '>=14'}
     dev: false
 
+  /limax/4.1.0:
+    resolution: {integrity: sha512-vciK5Mx+y+GrJjcVjbEjItzZ6Pbt+LXCb9d3qo3B+HcnTLZYRFyuszD6Hbwk0PDVEmZzS+FA0nT5aBy1HlZgGg==}
+    engines: {node: '>=14'}
+    dependencies:
+      hepburn: 1.2.1
+      lodash.deburr: 4.1.0
+      pinyin-pro: 3.19.6
+      speakingurl: 14.0.1
+    dev: true
+
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: false
@@ -2123,6 +2148,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: false
+
+  /lodash.deburr/4.1.0:
+    resolution: {integrity: sha512-m/M1U1f3ddMCs6Hq2tAsYThTBDaAKFDX3dwDo97GEYzamXi9SqUpjWi/Rrj/gf3X2n8ktwgZrlP1z6E3v/IExQ==}
+    dev: true
 
   /log-symbols/5.1.0:
     resolution: {integrity: sha512-l0x2DvrW294C9uDCoQe1VSU4gf529FkSZ6leBl4TiqZH/e+0R7hSfHQBNut2mNygDgHwvYHfFLn6Oxb3VWj2rA==}
@@ -2851,6 +2880,10 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /pinyin-pro/3.19.6:
+    resolution: {integrity: sha512-oWb34orr12+DjXf6gtGMB+gIpjRi7DZzyJE66ultbmNzVhpimM/utGtMI8GcbOy/lb26Ph/nogwNYriRPu+SGQ==}
+    dev: true
+
   /pirates/4.0.6:
     resolution: {integrity: sha512-saLsH7WeYYPiD25LDuLRRY/i+6HaPYr6G1OUlN39otzkSTxKnubR9RTxS3/Kk50s1g2JTgFwWQDQyplC5/SHZg==}
     engines: {node: '>= 6'}
@@ -3314,6 +3347,11 @@ packages:
   /space-separated-tokens/2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
     dev: false
+
+  /speakingurl/14.0.1:
+    resolution: {integrity: sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==}
+    engines: {node: '>=0.10.0'}
+    dev: true
 
   /sprintf-js/1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
